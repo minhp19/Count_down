@@ -1,16 +1,17 @@
+window.onload = function() {
+
 const DaysElement = document.getElementById('days');
 const HoursElement = document.getElementById('hours');
 const MinutesElement = document.getElementById('minutes');
 const SecondsElement = document.getElementById('seconds');
 
-// const targetDate = new Date("June 6 2025 09:50:00").getTime();
-const targetDate = new Date(Date.now() + 5 * 60 * 1000).getTime(); // 5 phút nữa
+const targetDate = new Date("January 1, 2026 00:00:00").getTime();
 
 const set = setInterval(timer, 1000);
 
 function timer() {
-    const currenDate = new Date().getTime();
-    const distance = targetDate - currenDate;
+    const currentDate = new Date().getTime();
+    const distance = targetDate - currentDate;
 
     const days = Math.floor(distance /1000 / 60 / 60 / 24);
     const hours = Math.floor(distance / 1000 / 60 / 60) % 24;
@@ -30,7 +31,4 @@ function timer() {
         SecondsElement.innerHTML = "00";
     }
 }
-
-console.log("Countdown script loaded!");
-
-
+}
