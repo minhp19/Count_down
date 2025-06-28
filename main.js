@@ -13,10 +13,20 @@ function timer() {
     const currentDate = new Date().getTime();
     const distance = targetDate - currentDate;
 
-    const days = Math.floor(distance /1000 / 60 / 60 / 24);
-    const hours = Math.floor(distance / 1000 / 60 / 60) % 24;
-    const minutes = Math.floor(distance / 1000 / 60) % 60;
-    const seconds = Math.floor(distance / 1000) % 60;
+    const ms_in_seconds = 1000;
+    const sec_in_minutes = 60;
+    const min_in_hours = 60;
+    const hour_in_days = 24;
+
+    const ms_in_minutes = ms_in_seconds * sec_in_minutes;
+    const ms_in_hours = ms_in_minutes * min_in_hours;
+    const ms_in_days = ms_in_hours * hour_in_days;
+
+    const days = Math.floor(distance / ms_in_days);
+    const hours = Math.floor((distance % ms_in_days) / ms_in_hours);
+    const minutes = Math.floor((distance % ms_in_hours) / ms_in_minutes);
+    const seconds = Math.floor((distance % ms_in_minutes) / ms_in_seconds);
+
 
     DaysElement.innerHTML = days;
     HoursElement.innerHTML = hours;
