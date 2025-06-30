@@ -5,7 +5,7 @@ const HoursElement = document.getElementById('hours');
 const MinutesElement = document.getElementById('minutes');
 const SecondsElement = document.getElementById('seconds');
 
-const targetDate = new Date("January 1, 2026 00:00:00").getTime();
+const targetDate = new Date("June 30, 2025 18:05:00").getTime();
 
 const set = setInterval(timer, 1000);
 
@@ -28,10 +28,11 @@ function timer() {
     const seconds = Math.floor((distance % ms_in_minutes) / ms_in_seconds);
 
 
-    DaysElement.innerHTML = days;
-    HoursElement.innerHTML = hours;
-    MinutesElement.innerHTML = minutes;
-    SecondsElement.innerHTML = seconds;
+    DaysElement.innerHTML = String(days).padStart(2, "0");
+    HoursElement.innerHTML = String(hours).padStart(2, "0");
+    MinutesElement.innerHTML = String(minutes).padStart(2, "0");
+    SecondsElement.innerHTML = String(seconds).padStart(2, "0");
+
     
     if(distance < 0) {
         clearInterval(set);
